@@ -36,4 +36,4 @@ jobs:
           echo test, and deploy your project.
       - uses: actions/download-artifact@v3
         with:
-         name: /home/aditya/world1.txt
+         name: artifact
