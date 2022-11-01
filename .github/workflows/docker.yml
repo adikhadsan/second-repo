@@ -1,5 +1,5 @@
  
-name: CI2
+name: CI3
 
 # Controls when the workflow will run
 on:
@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       
       - name: Run
-        run: docker run -d --name mycontainer -p 5000:5000 8485012281/myapp
+        run: docker run -d --name mycontainer -p 5000:5000 8485012281/empdb
       - name: sleep
         run: sleep 120
             
