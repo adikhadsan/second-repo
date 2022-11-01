@@ -41,8 +41,6 @@ jobs:
          path: world.txt
 
 
-      - uses: actions/download-artifact@v3
-        with:
-         name: /home/aditya/world.txt
+    
     
       
