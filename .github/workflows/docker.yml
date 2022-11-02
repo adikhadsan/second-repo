@@ -24,6 +24,8 @@ jobs:
         run: docker run -d --name mycontainer -p 9191:9191 8485012281/jenkins
       - name: Run
         run: docker ps
+      - name: sleep
+        run: sleep 30
       
       - name: curl
         run: curl --version
