@@ -36,9 +36,11 @@ jobs:
       - name: Run
         
         run: |
-         git_id=$(git rev-parse --short "$GITHUB_SHA")&&$(echo ${GITHUB_REF#refs/heads/})
+         git_id=$(git rev-parse --short "$GITHUB_SHA")
+         git_branch=$(echo ${GITHUB_REF#refs/heads/})
          echo $git_id
-         docker run -d --name mycontainer -p 8888:8888 8485012281/webserver:$git_id
+         echo $git_branch
+         docker run -d --name mycontainer -p 8888:8888 8485012281/webserver:$git_branch-$git_id
       - name: Run
         run: docker ps
       - name: sleep
