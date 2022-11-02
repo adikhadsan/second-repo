@@ -29,18 +29,16 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Run
-        env:
-          TEST_VAR: ${{steps.v1.git_hash}}
+        
         run: |
-          echo $TEST_VAR
-          docker run -d --name mycontainer -p 8888:8888 8485012281/webserver
+         git_id=$(git rev-parse --short "$GITHUB_SHA")
+         echo $git_id
+         docker run -d --name mycontainer -p 8888:8888 8485012281/webserver:$git_id
       - name: Run
         run: docker ps
       - name: sleep
-        run: |
-          sleep 30
-          echo $TEST_VAR
-        env:
-          TEST_VAR: ${{steps.v1.git_hash}}
+        run: sleep 30
+
+  
       - name: curl
         run: curl localhost:8888  
