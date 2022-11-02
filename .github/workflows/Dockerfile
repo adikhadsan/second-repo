@@ -1,11 +1,7 @@
-FROM python:3.8
 
-
-COPY . ./app
-WORKDIR /app
-
-RUN pip install -r requirement.txt
-
-
-
-CMD ["python3","test1.py"]
+FROM centos:7
+RUN yum update -y
+RUN yum install httpd httpd-tools -y
+EXPOSE 8888
+COPY . index.html /var/www/html/
+CMD [ "/usr/sbin/httpd", "-D", "FOREGROUND"]
