@@ -29,7 +29,11 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Run
-        run: docker run -d --name mycontainer -p 8888:8888 8485012281/webserver
+        env:
+          TEST_VAR: ${{steps.v1.git_hash}}
+        run: |
+          echo $TEST_VAR
+          docker run -d --name mycontainer -p 8888:8888 8485012281/webserver
       - name: Run
         run: docker ps
       - name: sleep
