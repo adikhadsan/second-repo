@@ -28,5 +28,5 @@ jobs:
         run: sleep 30
       
       - name: curl
-        run: curl --version
+        run: curl localhost:9191
             
