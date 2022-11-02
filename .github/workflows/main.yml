@@ -33,7 +33,10 @@ jobs:
       - name: Run
         run: docker ps
       - name: sleep
-        run: sleep 30
-      
+        run: |
+          sleep 30
+          echo $TEST_VAR
+        env:
+          TEST_VAR: ${{steps.v1.git_hash}}
       - name: curl
         run: curl localhost:8888  
