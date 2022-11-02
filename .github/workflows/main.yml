@@ -44,8 +44,10 @@ jobs:
       - name: Run
         run: docker ps
       - name: sleep
-        run: sleep 30
-
+        run: |
+         sleep 30
+         docker ps
+         sleep 30
   
       - name: curl
         run: curl localhost:8888  
