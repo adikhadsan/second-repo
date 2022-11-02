@@ -27,8 +27,8 @@ jobs:
         run: docker build -t 8485012281/webserver:${{steps.v1.git_hash}}
       - name: push
         run: docker push 8485012281/webserver:${{steps.v1.git_hash}}
-     - name: Run
-      run: docker run -d --name mycontainer -p 8888:8888 8485012281/webserver
+      - name: Run
+        run: docker run -d --name mycontainer -p 8888:8888 8485012281/webserver
       - name: Run
         run: docker ps
       - name: sleep
