@@ -40,7 +40,7 @@ jobs:
          git_branch=$(echo ${GITHUB_REF#refs/heads/})
          echo $git_id
          echo $git_branch
-         docker run -d --name mycontainer -p 8888:8888 8485012281/webserver:$git_branch-$git_id
+         docker run -d --name mycontainer -p 80:80 8485012281/webserver:$git_branch-$git_id
       - name: Run
         run: docker ps
       - name: sleep
@@ -50,4 +50,4 @@ jobs:
          sleep 30
   
       - name: curl
-        run: curl localhost:8888  
+        run: curl localhost:80
